@@ -10,7 +10,7 @@ Created on Mon Sep  4 16:45:22 2017
 import numpy as np
 import pandas as pd
 import re
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from numpy import dot
 from scipy.linalg import inv
 from multiprocessing import Pool
