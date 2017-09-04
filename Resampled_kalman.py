@@ -233,7 +233,7 @@ for n_rows in range(5):
         #print(xs)
     #pred.append(xs) 
     
-print(start_time)
-print(time.time)
+print(time.time()-start_time)
+
 #ssm.iloc[:,1] = np.ravel(pred)    
 #ssm.to_csv("prediction.csv",index = False)
