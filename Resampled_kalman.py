@@ -155,7 +155,7 @@ val_H =[1.,1.]
 Q_var = 10
 val_R = 10
 dim = 2
-n_sam = 100
+n_sam = 500
 dt = 1
 all_xs = []
 all_Ps = []
@@ -205,8 +205,8 @@ def resampled_kalman(count):
     return(out)
     
 num_threads = 8
-
-for n_rows in range(train.shape[0]):
+start_time = time.time()
+for n_rows in range(5):
     row = train.iloc[n_rows]
     data = pd.concat([pd.Series(row),row/pd.Series(row).shift(1)],axis=1)[1:]
     #xs, cov = np.zeros((n_sam,data.shape[0])),[]
@@ -220,9 +220,11 @@ for n_rows in range(train.shape[0]):
    #pred.append(xs_)
     #print(pred)
     if n_rows % 100 == 0:
-        print(n_rows)
-        print(xs)
+        #print(n_rows)
+        #print(xs)
     pred.append(xs) 
+elapsed_time = time.time() - start_time
+print(elapsed_time)
 
-ssm.iloc[:,1] = np.ravel(pred)    
-ssm.to_csv("prediction.csv",index = False)
+#ssm.iloc[:,1] = np.ravel(pred)    
+#ssm.to_csv("prediction.csv",index = False)
