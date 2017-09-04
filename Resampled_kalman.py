@@ -232,7 +232,7 @@ for n_rows in range(3):
         #print(xs)
     #pred.append(xs) 
 elapsed_time = time.time() - start_time    
-print(time.time()-start_time)
+print(elapsed_time)
 
 #ssm.iloc[:,1] = np.ravel(pred)    
 #ssm.to_csv("prediction.csv",index = False)
