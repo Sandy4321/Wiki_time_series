@@ -228,13 +228,12 @@ for n_rows in range(5):
    # print(xs_.shape)
    #pred.append(xs_)
     #print(pred)
-    if n_rows % 100 == 0:
+    #if n_rows % 100 == 0:
         #print(n_rows)
         #print(xs)
     #pred.append(xs) 
     
-elapsed_time = time.time() - start_time
-print(elapsed_time)
-
+print(start_time)
+print(time.time)
 #ssm.iloc[:,1] = np.ravel(pred)    
 #ssm.to_csv("prediction.csv",index = False)
