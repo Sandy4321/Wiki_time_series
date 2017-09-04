@@ -95,7 +95,7 @@ def resample(_data, p, seed=None):
     indices = -np.ones(num_obs, dtype=int)
     indices[0] = 0
         
-    for i in xrange(1, num_obs):
+    for i in range(1, num_obs):
         if (unifs[i] > p): 
             indices[i] = indices[i-1] + 1 
         else:
