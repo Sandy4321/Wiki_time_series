@@ -138,7 +138,6 @@ def resample(_data, p, seed=None):
 
     return [resampled_data, indices % num_obs]#, index_dict] 
     #end resample() 
-start_time = time.time()
 
 train = pd.read_csv("train_1.csv").fillna(0)
 keys = pd.read_csv("key_1.csv")
@@ -212,12 +211,12 @@ def resampled_kalman(count):
         #print(x)
         out.append(x[0])
     return(out)
-    
+start_time = time.time()    
 num_threads = 8
 
-for n_rows in range(5):
+for n_rows in range(3):
     row = train.iloc[n_rows]
-    data = pd.concat([pd.Series(row),row/pd.Series(row).shift(1)],axis=1)[1:]
+    data = pd.concat([pd.Series(row),row-pd.Series(row).shift(1)],axis=1)[1:]
     #xs, cov = np.zeros((n_sam,data.shape[0])),[]
     #xs, cov = [],[]
     pool = Pool(num_threads)                         # Create a multiprocessing Pool
@@ -232,7 +231,7 @@ for n_rows in range(5):
         #print(n_rows)
         #print(xs)
     #pred.append(xs) 
-    
+elapsed_time = time.time() - start_time    
 print(time.time()-start_time)
 
 #ssm.iloc[:,1] = np.ravel(pred)    
