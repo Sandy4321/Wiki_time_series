@@ -212,7 +212,7 @@ def resampled_kalman(count):
         out.append(x[0])
     return(out)
 start_time = time.time()    
-num_threads = 8
+num_threads = 10
 
 for n_rows in range(8):
     row = train.iloc[n_rows]
