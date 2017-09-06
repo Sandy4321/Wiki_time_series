@@ -219,7 +219,7 @@ for n_rows in range(8):
     data = pd.concat([pd.Series(row),row-pd.Series(row).shift(1)],axis=1)[1:]
     #xs, cov = np.zeros((n_sam,data.shape[0])),[]
     #xs, cov = [],[]
-    pool = Pool(process = num_threads)                         # Create a multiprocessing Pool
+    pool = Pool(processes = num_threads)                         # Create a multiprocessing Pool
     result = pool.map(resampled_kalman, range(n_sam))# proces data_inputs iterable with pool
     xs = np.nanmedian(result,axis = 0)
     pool.close()
