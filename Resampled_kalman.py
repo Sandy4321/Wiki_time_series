@@ -211,10 +211,10 @@ def resampled_kalman(count):
         #print(x)
         out.append(x[0])
     return(out)
-start_time = time.time()    
-num_threads = 10
+#start_time = time.time()    
+num_threads = 8
 
-for n_rows in range(8):
+for n_rows in range(train.shape[0]):
     row = train.iloc[n_rows]
     data = pd.concat([pd.Series(row),row-pd.Series(row).shift(1)],axis=1)[1:]
     #xs, cov = np.zeros((n_sam,data.shape[0])),[]
@@ -230,9 +230,9 @@ for n_rows in range(8):
     if n_rows % 100 == 0:
         print(n_rows)
         #print(xs)
-    #pred.append(xs) 
-elapsed_time = time.time() - start_time    
-print(elapsed_time)
+    pred.append(xs) 
+#elapsed_time = time.time() - start_time    
+#print(elapsed_time)
 
-#ssm.iloc[:,1] = np.ravel(pred)    
-#ssm.to_csv("prediction.csv",index = False)
+ssm.iloc[:,1] = np.ravel(pred)    
+ssm.to_csv("prediction.csv",index = False)
