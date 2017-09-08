@@ -163,7 +163,7 @@ val_H =[1.,1.]
 Q_var = 10
 val_R = 10
 dim = 2
-n_sam = 40
+n_sam = 20
 dt = 1
 all_xs = []
 all_Ps = []
@@ -212,7 +212,7 @@ def resampled_kalman(count):
         out.append(x[0])
     return(out)
 #start_time = time.time()    
-num_threads = 8
+num_threads = 10
 
 for n_rows in range(train.shape[0]):
     row = train.iloc[n_rows]
